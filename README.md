@@ -27,7 +27,17 @@ npm run serve
   * Employee description
   * employee background image
 
-3.Create service that gererates random employee list
+3.Create service that generates random employee list objects
+
+4.Implement Bottom employee thumbnails
+
+5.Implement Panel and thumbnail Component
+
+6.Integrate Animation
+
+7.Fix any responsive (mobile/desktop) styling needed
+
+8.Unit test components 
 
 
 
