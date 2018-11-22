@@ -1,0 +1,40 @@
+{
+  "name": "funkycorp-codechallenge",
+  "version": "1.0.0",
+  "description": "code challenge demo",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "webpack-dev-server --mode development --open",
+    "dev-build": "webpack --mode development",
+    "prod-build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smoothlikejazz/funkycorp-codechallenge.git"
+  },
+  "keywords": [
+    "code",
+    "challenge"
+  ],
+  "author": "jasper.jackson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smoothlikejazz/funkycorp-codechallenge/issues"
+  },
+  "homepage": "https://github.com/smoothlikejazz/funkycorp-codechallenge#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}
