@@ -1,21 +1,23 @@
 import React from "react";
-import employeeList from "../../data/employee_list_data";
+import {connect} from "react-redux";
 import EmployeeThumb from "../../components/EmployeeThumb";
+import * as actions from "../../actions";
 
-
-export default class EmployeeGrid extends React.Component {
+class EmployeeGrid extends React.Component {
     constructor(props) {
         super(props);
         this.employeeSelect.bind(this);
     }
 
     employeeSelect (employee) {
-        // propagate event and communicate with main top panel of selected employees
+        // do some highlighting so we know which one is selected
 
+        // propagate event and communicate with main top panel of selected employees
+        this.props.selectEmployee(employee);
     }
 
     render() {
-        const EmployeeListGrid = employeeList.map((employee, i) => {
+        const EmployeeListGrid = this.props.employees.map((employee, i) => {
             return <EmployeeThumb key={employee.id} employee={employee} onClick={ () => this.employeeSelect(employee)} />
         });
 
@@ -26,3 +28,11 @@ export default class EmployeeGrid extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    const {employees} = state;
+    return {employees}
+}
+
+export default connect(mapStateToProps, actions)(EmployeeGrid);
+

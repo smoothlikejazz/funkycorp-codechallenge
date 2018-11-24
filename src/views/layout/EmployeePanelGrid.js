@@ -2,13 +2,15 @@ import React from "react";
 import employeeList from "../../data/employee_list_data";
 import EmployeeCard from "../../components/EmployeeCard";
 import {CSSTransitionGroup} from 'react-transition-group';
+import connect from "react-redux/es/connect/connect";
+import * as actions from "../../actions";
 
-export default class EmployeePanelGrid extends React.Component {
+class EmployeePanelGrid extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            employeePanelList : employeeList.slice(0,3)
+            employeePanelList: employeeList.slice(0, 3)
         }
     }
 
@@ -36,20 +38,31 @@ export default class EmployeePanelGrid extends React.Component {
 
     render() {
 
-        const EmployeeCardList = this.state.employeePanelList.map((employee, index) => {
+        const EmployeeCardList = this.props.panelList.map((employee, index) => {
             return <EmployeeCard key={employee.id} employee={employee}/>
         });
 
         return (
             <div>
-                <div>
+                <CSSTransitionGroup
+                    className="funkycorp-employee-panel-grid"
+                    transitionName={"panel"}
+                    transitionEnterTimeout={1000}
+                    transitionLeaveTimeout={1800}
+                >
                     {EmployeeCardList}
-                </div>
-                <div>
-                    {/* For Now Add Manually Test Transition Animation Flow*/}
-                    <input type="button" onClick={() => this.addSelectedEmployee()} value={"add"}/>
-                </div>
+                </CSSTransitionGroup>
             </div>
         );
     }
 }
+
+const mapStateToProps = state => {
+    const {panelList, selectedEmployee} = state;
+    return {
+        selectedEmployee,
+        panelList
+    }
+}
+
+export default connect(mapStateToProps)(EmployeePanelGrid);
