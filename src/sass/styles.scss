@@ -9,6 +9,7 @@ $primary-sub-header-color: #2675A0;
 $secondary-header-color: #45749f;
 
 $primary-font-color: #4a4a4a;
+$primary-link-color: #6495f9;
 $highlight-color: #6573F4;
 
 $border-radius-default: 10px;
@@ -39,31 +40,52 @@ body {
   }
   &-secondary {
     color: $primary-sub-header-color;
+    word-break: break-word;
+    font-size: 16px;
+    line-height: 16px;
+
+    @media (min-width: 900px) {
+      font-size: 24px;
+      line-height: unset;
+    }
+
   }
 }
 
 .generic-toggle-icon-container {
-  float: right;
+  position: absolute;
+  right: 0;
   .generic-arrow {
     width: 25px;
     cursor: pointer;
     transition: transform .6s ease-in-out;
     &.up {
-      transform:rotate(180deg);
+      transform: rotate(180deg);
     }
     &.down {
-      transform:rotate(0deg);
+      transform: rotate(0deg);
     }
   }
 }
 
+a {
+  color: $primary-link-color;
+  &:hover {
+    color: $highlight-color;
+  }
+}
 
 /* Thumbnail Grid */
 .funkycorp-employee-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 25px;
+  justify-content: space-evenly;
+  margin: 0 5px;
+
+  @media (min-width: 900px) {
+    margin: 0 25px;
+    justify-content: space-between;
+  }
 
   .funkycorp-employee-thumb {
     cursor: pointer;
@@ -71,9 +93,11 @@ body {
     border-radius: $border-radius-default;
     max-width: 170px;
     max-height: 200px;
+    margin-bottom: 10px;
 
-    &.selected {
-      border: solid 1px #899eea;
+    filter: grayscale(100%);
+    &.selected,&:hover {
+      filter: grayscale(0%);
     }
 
     img {
@@ -114,22 +138,34 @@ body {
       border-radius: $border-radius-default;
       float: left;
       margin: 0 20px 20px 0;
-      max-width: 170px;
-      max-height: 200px;
+      max-height: 150px;
+
+      @media (min-width: 900px) {
+        max-height: 200px;
+        max-width: 170px;
+      }
+
     }
   }
 }
 
 .funkycorp-employee-card {
+  display: flex;
+  flex-direction: column;
   background-color: $primary-card-background-color;
   padding: 20px;
-  margin: 0 25px;
+  margin: 0 5px;
   border-radius: $border-radius-default;
   width: 100px;
-  height: 400px;
+  height: 440px;
   overflow: hidden;
   flex-grow: 1;
   transition: all 2s;
+
+  @media (min-width: 900px) {
+    margin: 0 25px;
+    height: 400px;
+  }
 
   &:first-child {
     //margin-right: 40px;
@@ -152,14 +188,18 @@ body {
       }
     }
   }
-  .funkycorp-employee-contact-details{
-    transition: all 1500ms;
+  .funkycorp-employee-description-container {
+    flex: 1;
+    position: relative;
+  }
+  .funkycorp-employee-contact-details-container {
+    flex: 1;
+    transition: all 300ms;
     overflow: hidden;
     display: block;
     clear: left;
     &.collapse {
-      height: 0;
-      display: none;
+      flex: 0;
     }
 
     .funkycorp-header-secondary {
@@ -169,41 +209,38 @@ body {
   }
 }
 
-
 /* Common Layout Items */
 
 footer {
   &.copyright {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #000;
+    color: $primary-font-color;
     margin: 20px 0;
     text-align: center;
   }
 }
 
-
+/* CCCReactTransition */
 .panel-enter {
-  flex-grow:0;
-  width:0;
+  flex-grow: 0;
+  width: 0;
   opacity: .5;
   padding: 0;
 }
 
 .panel-enter.panel-enter-active {
-  flex-grow:1;
+  flex-grow: 1;
   opacity: 1;
   padding: 20px;
 }
 
 .panel-leave {
-  flex-grow:1;
-  width:100%;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .panel-leave.panel-leave-active {
-  flex-grow:0;
-  width:0;
+  flex-grow: 0;
+  width: 0;
   margin: 0;
   padding: 0;
   opacity: 0;

@@ -6,8 +6,8 @@ const INITIAL_STATE = employeeList.slice(0, 3);
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SELECT_EMPLOYEE:
-            // need to add logic to update the panelList
-            //TODO check if selected item is already in the existing panellist
+            // TODO need to add logic to update the panelList
+            //TODO check if selected item is already in the existing panellist, should be handled in components event
             const newEmployeeList = [
                 action.payload,
                 ...state
