@@ -1,4 +1,5 @@
 @import "./animations";
+@import "./responsive";
 
 $primary-background-color: #EDF2F6;
 $primary-card-background-color: #F8F8F8;
@@ -62,6 +63,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0 25px;
 
   .funkycorp-employee-thumb {
     cursor: pointer;
@@ -69,6 +71,10 @@ body {
     border-radius: $border-radius-default;
     max-width: 170px;
     max-height: 200px;
+
+    &.selected {
+      border: solid 1px #899eea;
+    }
 
     img {
       max-width: 170px;
@@ -134,19 +140,23 @@ body {
 
   .funkycorp-employee-bio {
     position: relative;
-    &.collapsed:before {
-      position: absolute;
-      content: "";
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(248, 248, 248, 0) 0%, rgb(248, 248, 248) 100%, #f8f8f8 100%);
+    &.collapsed {
+      max-height: 120px;
+      overflow: hidden;
+      &:before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(248, 248, 248, 0) 0%, rgb(248, 248, 248) 100%, #f8f8f8 100%);
+      }
     }
   }
   .funkycorp-employee-contact-details{
     transition: all 1500ms;
-    height: 150px;
     overflow: hidden;
     display: block;
+    clear: left;
     &.collapse {
       height: 0;
       display: none;

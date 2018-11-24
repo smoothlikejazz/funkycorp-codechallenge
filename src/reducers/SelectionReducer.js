@@ -1,6 +1,8 @@
 import {SELECT_EMPLOYEE} from "../constants/actions_types"
 
-export default (state = null, action) => {
+const INITIAL_STATE = ""
+
+export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SELECT_EMPLOYEE:
             return action.payload;

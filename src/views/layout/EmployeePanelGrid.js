@@ -1,44 +1,46 @@
 import React from "react";
-import employeeList from "../../data/employee_list_data";
 import EmployeeCard from "../../components/EmployeeCard";
 import {CSSTransitionGroup} from 'react-transition-group';
 import connect from "react-redux/es/connect/connect";
-import * as actions from "../../actions";
 
 class EmployeePanelGrid extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            employeePanelList: employeeList.slice(0, 3)
+            panelLimit: 1
         }
+
     }
 
-    addSelectedEmployee() {
+    onWindowResize() {
+        // if window is resized ensure we notify state so the number of panels can be adjusted
+        this.setState({ panelLimit: this.getPanelLimit() });
+    }
 
-        const newEmployeeList = [
-            {
-                "id": Math.floor(Math.random() * 100),
-                "name": "Jill",
-                "position": "CEO",
-                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx2_Fxepv3RExsP9ii7Qoin0XyqEatJHIsqmKGZMWhnVD0vR5FcQ",
-                "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            },
-            ...this.state.employeePanelList
-        ];
+    componentDidMount() {
+        this.setState({ panelLimit: this.getPanelLimit() });
+        window.addEventListener('resize', this.onWindowResize.bind(this));
+    }
 
-        // we only need 3 items to display in the panel, as we add selected employee, remove the 3rd employee from list
-        newEmployeeList.splice(3, 1);
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.onWindowResize.bind(this));
+    }
 
-        // update state
-        this.setState({
-            employeePanelList: newEmployeeList
-        });
+    getPanelLimit() {
+        let panelLimit = 3;
+        if(window.innerWidth < 900){
+            panelLimit =1;
+        } else if(window.innerWidth < 1200){
+            panelLimit =2;
+        }
+        return panelLimit;
     }
 
     render() {
 
-        const EmployeeCardList = this.props.panelList.map((employee, index) => {
+        const panelList = this.props.panelList.slice(0, this.state.panelLimit);
+        const EmployeeCardList = panelList.map((employee, index) => {
             return <EmployeeCard key={employee.id} employee={employee}/>
         });
 
