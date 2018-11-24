@@ -2,10 +2,15 @@
  * Boilerplate setup
  */
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const htmlPlugin = new HtmlWebPackPlugin({
     template: "./src/index.html",
     filename: "./index.html"
+});
+const cssPlugin = new MiniCssExtractPlugin({
+    filename: "[name].css",
+    chunkFilename: "[id].css"
 });
 
 module.exports = {
@@ -22,8 +27,19 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
-            }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader"
+                ]
+            },
         ]
     },
-    plugins: [htmlPlugin]
+    plugins: [
+        htmlPlugin,
+        cssPlugin,
+    ]
 };

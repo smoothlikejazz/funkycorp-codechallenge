@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import style from "./sass/styles.scss";
 
 const FunkyCorpMainDemo = () => {
     return (
-        <div>
-            FunkyCorp demo stub
+        <div className="funkcorp-container">
         </div>
     );
 };
