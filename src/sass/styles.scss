@@ -1,4 +1,103 @@
+@import "./animations";
+$primary-background-color: #EDF2F6;
+$primary-card-background-color: #F8F8F8;
+
+$primary-header-color: #6E79C1;
+$primary-sub-header-color: #2675A0;
+
+$highlight-color: #6573F4;
+
+$border-radius-default: 10px;
+$default-component-spacing: 20px 0;
+
+/* Generic Styles*/
 body {
+  background-color: $primary-background-color;
   font-size: 12px;
   line-height: 20px;
+}
+
+.funkcorp-container {
+  padding: 0 20px;
+}
+
+.shadow {
+  -webkit-box-shadow: 2px 2px 10px #c1c1c1;
+  -moz-box-shadow: 2px 2px 10px #c1c1c1;
+  box-shadow: 2px 2px 10px #c1c1c1;
+}
+
+
+/* Thumbnail Grid */
+.funkycorp-employee-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .funkycorp-employee-thumb {
+    cursor: pointer;
+    img {
+      border-radius: $border-radius-default;
+      max-width: 170px;
+      //border: solid 1px $highlight-color;
+    }
+
+    :hover {
+      -webkit-animation: swing 1s ease;
+      animation: swing 1s ease;
+      -webkit-animation-iteration-count: 1;
+      animation-iteration-count: 1;
+    }
+
+  }
+}
+
+/* Panel Grid */
+.funkycorp-employee-panel-grid {
+  display: flex;
+  justify-content: space-around;
+  margin: $default-component-spacing;
+
+  .funkycorp-employee-thumb {
+
+    @media (min-width: 30em) {
+      display: none;
+    }
+
+    img {
+      border-radius: $border-radius-default;
+      float: left;
+      margin: 0 20px 20px 0;
+    }
+  }
+
+}
+
+.funkycorp-employee-card {
+  background-color: $primary-card-background-color;
+  padding: 20px;
+  border-radius: $border-radius-default;
+  width: 500px;
+  &:first-child {
+    margin-right: 40px;
+  }
+  &:last-child {
+    margin-left: 40px;
+  }
+
+  .funkycorp-employee-description {
+  }
+
+}
+
+/* Common Layout Items */
+
+footer {
+  &.copyright {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000;
+    margin: 20px 0;
+    text-align: center;
+  }
 }
