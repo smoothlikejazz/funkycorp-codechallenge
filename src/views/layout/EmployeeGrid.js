@@ -14,10 +14,11 @@ class EmployeeGrid extends React.Component {
         // Fixme do some handling here and see if the selected employee is already in the panel list
         if (!this._isAlreadySelected(employee)) {
             // do some highlighting so we know which one is selected
-            scroll.scrollToTop();
             // propagate event and communicate with main top panel of selected employees
             this.props.selectEmployee(employee);
         }
+        // scroll to top
+        scroll.scrollToTop();
     }
 
     _isAlreadySelected(employee) {

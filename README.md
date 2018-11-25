@@ -57,5 +57,5 @@ The thumbnail grid will show as if 3 employees are still selected. (Means that u
  | Chrome      | Pass | 
  | Safari      | Pass      | 
  | Firefox | Pass      |
- | IE 10 | pending (VMWare)      | 
+ | IE 11+ | pending (VMWare)      | 
  
