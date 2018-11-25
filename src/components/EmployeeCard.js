@@ -44,9 +44,9 @@ export default class EmployeeCard extends React.Component {
                     <h2 className="funkycorp-header-secondary">Contact</h2>
                     <ul>
                         <li>E-Mail: <a href={`mailt0:${employee.email}`}> Melissa.jawaharial@example.com</a></li>
-                        <li>Mobile: 1-888-888-888</li>
-                        <li>Skype: @melissa.jawaharlial</li>
-                        <li>Department: Agriculture</li>
+                        <li>Mobile: {employee.mobile}</li>
+                        <li>Skype: {employee.social_handle}</li>
+                        <li>Department: {employee.department}</li>
                     </ul>
                 </div>
             </div>

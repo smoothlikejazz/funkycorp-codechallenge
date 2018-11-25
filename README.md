@@ -39,5 +39,23 @@ npm run serve
 
 8.Unit test components 
 
+Extra
 
+9.Hook up to mock json api, place in loaders
 
+## Known Issues
+
+If manually resizing the browser to test responsive views, Going from the 3 panel list item to the 1 panel
+The thumbnail grid will show as if 3 employees are still selected. (Means that user will be unable to select employee that seems already selected)
+ 
+ * This can be fixed by removing panelList items when scaling down. Choosing not to for the Demo so we can see the responsive changes when resizing.
+ * When initially loaded in users viewport
+ 
+ ## Test Cases
+ | Browser        | Status       |
+ | ------------- |:-------------:| 
+ | Chrome      | Pass | 
+ | Safari      | Pass      | 
+ | Firefox | Pass      |
+ | IE 10 | pending (VMWare)      | 
+ 

@@ -8,18 +8,18 @@ class EmployeePanelGrid extends React.Component {
         super(props);
 
         this.state = {
-            panelLimit: 1
+            panelLimit: 1 //default initial panel limit
         }
 
     }
 
     onWindowResize() {
         // if window is resized ensure we notify state so the number of panels can be adjusted
-        this.setState({ panelLimit: this.getPanelLimit() });
+        this.setState({ panelLimit: this._getResponsiveViewPanelLimit() });
     }
 
     componentDidMount() {
-        this.setState({ panelLimit: this.getPanelLimit() });
+        this.setState({ panelLimit: this._getResponsiveViewPanelLimit() });
         window.addEventListener('resize', this.onWindowResize.bind(this));
     }
 
@@ -27,7 +27,7 @@ class EmployeePanelGrid extends React.Component {
         window.removeEventListener('resize', this.onWindowResize.bind(this));
     }
 
-    getPanelLimit() {
+    _getResponsiveViewPanelLimit() {
         let panelLimit = 3;
         if(window.innerWidth < 900){
             panelLimit =1;
@@ -38,7 +38,6 @@ class EmployeePanelGrid extends React.Component {
     }
 
     render() {
-
         const panelList = this.props.panelList.slice(0, this.state.panelLimit);
         const EmployeeCardList = panelList.map((employee, index) => {
             return <EmployeeCard key={employee.id} employee={employee}/>
