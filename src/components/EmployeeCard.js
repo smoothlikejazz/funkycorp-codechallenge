@@ -43,7 +43,7 @@ export default class EmployeeCard extends React.Component {
                 <div className={`funkycorp-employee-contact-details-container ${this.state.showSnippet ? "" : "collapse"}`}>
                     <h2 className="funkycorp-header-secondary">Contact</h2>
                     <ul>
-                        <li>E-Mail: <a href={`mailt0:${employee.email}`}> Melissa.jawaharial@example.com</a></li>
+                        <li>E-Mail: <a href={`mailto:${employee.email}`}> {employee.email}</a></li>
                         <li>Mobile: {employee.mobile}</li>
                         <li>Skype: {employee.social_handle}</li>
                         <li>Department: {employee.department}</li>
